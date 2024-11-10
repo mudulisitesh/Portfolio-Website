@@ -7,7 +7,10 @@ import {
   User,
   Github,
   Mail,
-  Laptop
+  Laptop,
+  Building,
+  GraduationCap,
+  Calendar
 } from 'lucide-react';
 
 const TypewriterText = ({ text }) => {
@@ -82,6 +85,37 @@ const PortfolioWebsite = () => {
     { category: "Libraries", items: ["Sci-kit learn", "Pandas", "Seaborn"] }
   ];
 
+  const experience = [
+    {
+      company: "Shell India Market Pvt Ltd.",
+      role: "Data Engineer",
+      period: "August 2023 - Present",
+      responsibilities: [
+        " Modified ETL Pipeline to achieve 30% faster Pipeline runtime, and achieved 20% less resource utilisation.",
+        " Saved estimated $30K in resources by automating emails for the business.",
+        " Achieved a 68% carbon emission reduction due to optimisation in SQL Queries and Stored Procedures.",
+        " Implemented incremental load methodology as opposed to full load to make data reliable and improved data load speeds by 40%",
+        " Was involved in consumer facing side of the business, hence had frequent interactions with customers as well as stake holders, leading to working in extremely fast paced environment.",
+        " Did Github Actions, CI/CD Setup for a large project, and migrating the codebase to github, with setting up security policies and branch protection policies. Also involved in setting up build pipelines using YML files for github actions metadata"
+      ]
+    }
+    // Add more experiences as needed
+  ];
+
+  const education = [
+    {
+      degree: "Bachelor of Technology",
+      field: "Chemical Engineering",
+      institution: "National Institute Of Technology Rourkela",
+      year: "2019 - 2023",
+      achievements: [
+        
+        "Did My Research Project in CO2 Adsorption Simulation using ASPEN Adsorption software."
+      ]
+    }
+    // Add more education entries as needed
+  ];
+
   return (
     <div className="min-h-screen bg-gray-900 text-gray-100">
       {/* Hero Section with Moving Background */}
@@ -107,7 +141,7 @@ const PortfolioWebsite = () => {
             animate={{ opacity: 1 }}
             transition={{ delay: 2.5 }}
           >
-            <TypewriterText text="Microsoft Certified Data Engineer Associate" />
+            <TypewriterText text="Data Engineer" />
           </motion.div>
           <motion.div 
             className="flex justify-center space-x-4 mt-8"
@@ -176,12 +210,109 @@ const PortfolioWebsite = () => {
         </div>
       </motion.section>
 
-      {/* Additional sections would follow with similar styling */}
-      
+      {/* Work Experience Section */}
+      <motion.section 
+        className="py-20 px-4 bg-black"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={fadeIn}
+      >
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl font-mono text-center mb-12 text-green-400">&gt; Work_Experience</h2>
+          <div className="space-y-8">
+            {experience.map((exp, index) => (
+              <motion.div 
+                key={index}
+                className="p-6 bg-gray-900 rounded-lg border border-green-500/30"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: index * 0.2 }}
+                whileHover={{ scale: 1.02, borderColor: 'rgb(34, 197, 94)' }}
+              >
+                <div className="flex items-center mb-4">
+                  <Building className="text-green-500 mr-3" size={24} />
+                  <div>
+                    <h3 className="text-xl font-mono text-green-400">{exp.company}</h3>
+                    <p className="text-gray-400 font-mono">{exp.role}</p>
+                  </div>
+                  <div className="ml-auto flex items-center text-gray-400 font-mono">
+                    <Calendar className="mr-2" size={16} />
+                    {exp.period}
+                  </div>
+                </div>
+                <ul className="space-y-2">
+                  {exp.responsibilities.map((resp, i) => (
+                    <motion.li 
+                      key={i}
+                      className="flex items-center space-x-2 text-gray-300 font-mono"
+                      whileHover={{ x: 10, color: 'rgb(34, 197, 94)' }}
+                    >
+                      <Terminal size={16} className="text-green-500" />
+                      <span>{resp}</span>
+                    </motion.li>
+                  ))}
+                </ul>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </motion.section>
+
+      {/* Education Section */}
+      <motion.section 
+        className="py-20 px-4 bg-gray-800"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={fadeIn}
+      >
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl font-mono text-center mb-12 text-green-400">&gt; Education</h2>
+          <div className="space-y-8">
+            {education.map((edu, index) => (
+              <motion.div 
+                key={index}
+                className="p-6 bg-gray-900 rounded-lg border border-green-500/30"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: index * 0.2 }}
+                whileHover={{ scale: 1.02, borderColor: 'rgb(34, 197, 94)' }}
+              >
+                <div className="flex items-center mb-4">
+                  <GraduationCap className="text-green-500 mr-3" size={24} />
+                  <div>
+                    <h3 className="text-xl font-mono text-green-400">{edu.degree}</h3>
+                    <p className="text-gray-400 font-mono">{edu.field}</p>
+                    <p className="text-gray-400 font-mono">{edu.institution}</p>
+                  </div>
+                  <div className="ml-auto flex items-center text-gray-400 font-mono">
+                    <Calendar className="mr-2" size={16} />
+                    {edu.year}
+                  </div>
+                </div>
+                <ul className="space-y-2">
+                  {edu.achievements.map((achievement, i) => (
+                    <motion.li 
+                      key={i}
+                      className="flex items-center space-x-2 text-gray-300 font-mono"
+                      whileHover={{ x: 10, color: 'rgb(34, 197, 94)' }}
+                    >
+                      <Terminal size={16} className="text-green-500" />
+                      <span>{achievement}</span>
+                    </motion.li>
+                  ))}
+                </ul>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </motion.section>
+
       {/* Footer */}
       <footer className="bg-black text-gray-400 py-8 border-t border-green-500/30">
         <div className="max-w-6xl mx-auto px-4 text-center font-mono">
-          <p className="text-green-400">$ echo "© 2024 Sitesh Muduli. All rights reserved."</p>
+          <p className="text-green-400">© 2024 Sitesh Muduli. All rights reserved.</p>
           <div className="flex justify-center space-x-4 mt-4">
             <motion.a 
               href="mailto:mudulisitesh@gmail.com"
