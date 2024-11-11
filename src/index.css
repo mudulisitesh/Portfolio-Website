@@ -54,3 +54,23 @@ body {
 .animate-float {
   animation: float 6s ease-in-out infinite;
 }
+
+/* Splash Screen CSS */
+.splash-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #2e2e2e; /* Change to your preferred color */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.splash-title {
+  font-size: 3rem;
+  color: #ffffff;
+  opacity: 0;
+}

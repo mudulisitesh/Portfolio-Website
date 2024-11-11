@@ -5,9 +5,40 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite + React</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
   </head>
   <body>
+    <div id="splash-screen" class="splash-screen">
+      <h1 class="splash-title">Welcome to My Portfolio</h1>
+    </div>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    <!-- Splash Screen HTML -->
+    <script>
+      // Run the animation once the DOM is fully loaded
+      document.addEventListener("DOMContentLoaded", function() {
+          // Text fade-in animation
+          anime({
+              targets: '.splash-title',
+              opacity: [0, 1],
+              duration: 2000,
+              easing: 'easeInOutQuad'
+          });
+  
+          // Splash screen fade-out after delay
+          setTimeout(() => {
+              anime({
+                  targets: '#splash-screen',
+                  opacity: [1, 0],
+                  duration: 1000,
+                  easing: 'easeInOutQuad',
+                  complete: function() {
+                      document.getElementById("splash-screen").style.display = "none";
+                  }
+              });
+          }, 3000); // Change this to control how long the splash screen is visible
+      });
+  </script>
+  
   </body>
 </html>
