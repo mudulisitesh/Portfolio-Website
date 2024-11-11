@@ -74,3 +74,18 @@ body {
   color: #ffffff;
   opacity: 0;
 }
+
+.line-drawing-demo {
+  width: 80px;
+  height: 80px;
+  display: block;
+  margin-bottom: 20px; /* Adjust if needed */
+}
+
+.lines {
+  fill: none;
+  stroke: #ffffff;
+  stroke-width: 2;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+}
