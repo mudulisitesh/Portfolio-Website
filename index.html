@@ -9,23 +9,28 @@
   </head>
   <body>
     <div id="splash-screen" class="splash-screen">
+      <svg class="line-drawing-demo" viewBox="0 0 100 100">
+          <path d="M10,50 Q25,10 40,50 T70,50" class="lines"></path>
+      </svg>
       <h1 class="splash-title">Welcome to My Portfolio</h1>
-    </div>
+  </div>  
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
     <!-- Splash Screen HTML -->
     <script>
-      // Run the animation once the DOM is fully loaded
       document.addEventListener("DOMContentLoaded", function() {
-          // Text fade-in animation
+          // Animate the SVG path
           anime({
-              targets: '.splash-title',
-              opacity: [0, 1],
-              duration: 2000,
-              easing: 'easeInOutQuad'
+              targets: '.line-drawing-demo .lines',
+              strokeDashoffset: [anime.setDashoffset, 0],
+              easing: 'easeInOutSine',
+              duration: 1500,
+              delay: function(el, i) { return i * 250 },
+              direction: 'alternate',
+              loop: true
           });
   
-          // Splash screen fade-out after delay
+          // Fade out the splash screen after animation completes
           setTimeout(() => {
               anime({
                   targets: '#splash-screen',
@@ -36,9 +41,10 @@
                       document.getElementById("splash-screen").style.display = "none";
                   }
               });
-          }, 3000); // Change this to control how long the splash screen is visible
+          }, 3000); // Adjust the delay time as needed
       });
   </script>
+  
   
   </body>
 </html>
