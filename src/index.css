@@ -59,35 +59,21 @@ body {
 body, html {
   margin: 0;
   padding: 0;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   overflow: hidden;
+  background-color: #1d1e22;
 }
 
-.splash-screen {
+#splash-screen {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(45deg, #ff4b5c, #6a11cb);
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 9999;
-  opacity: 1;
-}
-
-.circle, .line {
-  fill: none;
-  stroke-width: 5;
-  stroke-dasharray: 1000;
-  stroke-dashoffset: 1000;
-}
-
-.circle {
-  stroke: #ffffff;
-}
-
-.line {
-  stroke: #ffeb3b;
+  z-index: 10;
+  background: radial-gradient(circle, #2a2d34, #1d1e22);
 }
