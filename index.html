@@ -9,36 +9,39 @@
   </head>
   <body>
     <div id="splash-screen" class="splash-screen">
-      <svg class="circle-animation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
-        <circle cx="100" cy="100" r="80" class="circle"></circle>
+      <svg class="circle-animation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
+        <circle cx="150" cy="150" r="120" class="circle"></circle>
       </svg>
-      <h1 class="welcome-text">Welcome</h1>
+      <svg class="line-animation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
+        <path class="line" d="M50,150 Q150,50 250,150 Q150,250 50,150" />
+      </svg>
     </div>    
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
     <!-- Splash Screen HTML -->
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-        // Animate the circle stroke
+        // Circle animation
         anime({
           targets: '.circle',
           strokeDashoffset: [anime.setDashoffset, 0],
-          easing: 'easeOutQuad',
+          easing: 'easeInOutQuad',
           duration: 1500,
+          loop: false,
+          delay: 500
+        });
+    
+        // Line animation
+        anime({
+          targets: '.line',
+          strokeDashoffset: [anime.setDashoffset, 0],
+          easing: 'easeInOutQuad',
+          duration: 1500,
+          delay: 1000,
           loop: false
         });
     
-        // Animate the text opacity and position
-        anime({
-          targets: '.welcome-text',
-          opacity: [0, 1],
-          translateY: [50, 0],
-          easing: 'easeOutExpo',
-          duration: 1500,
-          delay: 1000
-        });
-    
-        // Fade out the splash screen after animation
+        // Fade out splash screen
         setTimeout(() => {
           anime({
             targets: '#splash-screen',
@@ -49,9 +52,10 @@
               document.getElementById("splash-screen").style.display = "none";
             }
           });
-        }, 2500); // Delay time for splash screen to fade out after the animation
+        }, 2500); // Splash screen disappears after animation completes
       });
     </script>
+    
     
   
   
