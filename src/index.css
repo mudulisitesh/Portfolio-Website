@@ -62,30 +62,24 @@ body {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: #2e2e2e; /* Change to your preferred color */
+  background-color: #2e2e2e;
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 9999;
 }
 
-.splash-title {
-  font-size: 3rem;
-  color: #ffffff;
-  opacity: 0;
-}
-
-.line-drawing-demo {
-  width: 80px;
-  height: 80px;
+.name-animation {
+  width: 500px;
+  height: 100px;
   display: block;
-  margin-bottom: 20px; /* Adjust if needed */
+  margin: 0 auto;
 }
 
-.lines {
+.line {
   fill: none;
   stroke: #ffffff;
-  stroke-width: 2;
+  stroke-width: 3;
   stroke-dasharray: 100;
   stroke-dashoffset: 100;
 }

@@ -9,41 +9,49 @@
   </head>
   <body>
     <div id="splash-screen" class="splash-screen">
-      <svg class="line-drawing-demo" viewBox="0 0 100 100">
-          <path d="M10,50 Q25,10 40,50 T70,50" class="lines"></path>
+      <svg class="name-animation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 100">
+        <!-- 'S' -->
+        <path class="line" d="M20,60 Q40,20 60,40 Q80,60 60,80" />
+        <!-- 'I' -->
+        <path class="line" d="M90,20 L90,80" />
+        <!-- 'T' -->
+        <path class="line" d="M120,20 L150,20 L150,80" />
+        <!-- 'E' -->
+        <path class="line" d="M160,20 L160,80 M160,50 L200,50 M160,20 L200,20" />
+        <!-- 'S' -->
+        <path class="line" d="M220,60 Q240,20 260,40 Q280,60 260,80" />
+        <!-- 'H' -->
+        <path class="line" d="M290,80 L290,20 M290,50 L320,50 L320,20 L320,80" />
       </svg>
-      <h1 class="splash-title">Welcome to My Portfolio</h1>
-  </div>  
+    </div>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
     <!-- Splash Screen HTML -->
     <script>
-      document.addEventListener("DOMContentLoaded", function() {
-          // Animate the SVG path
+      document.addEventListener("DOMContentLoaded", function () {
+        anime({
+          targets: '.name-animation .line',
+          strokeDashoffset: [anime.setDashoffset, 0],
+          easing: 'easeInOutSine',
+          duration: 1500,
+          delay: function (el, i) { return i * 250 },
+          direction: 'alternate',
+          loop: false
+        });
+
+        setTimeout(() => {
           anime({
-              targets: '.line-drawing-demo .lines',
-              strokeDashoffset: [anime.setDashoffset, 0],
-              easing: 'easeInOutSine',
-              duration: 1500,
-              delay: function(el, i) { return i * 250 },
-              direction: 'alternate',
-              loop: true
+            targets: '#splash-screen',
+            opacity: [1, 0],
+            duration: 1000,
+            easing: 'easeInOutQuad',
+            complete: function () {
+              document.getElementById("splash-screen").style.display = "none";
+            }
           });
-  
-          // Fade out the splash screen after animation completes
-          setTimeout(() => {
-              anime({
-                  targets: '#splash-screen',
-                  opacity: [1, 0],
-                  duration: 1000,
-                  easing: 'easeInOutQuad',
-                  complete: function() {
-                      document.getElementById("splash-screen").style.display = "none";
-                  }
-              });
-          }, 3000); // Adjust the delay time as needed
+        }, 3000); // Adjust this based on how long you want the animation to last
       });
-  </script>
+    </script>
   
   
   </body>
