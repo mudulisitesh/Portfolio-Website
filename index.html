@@ -8,56 +8,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
   </head>
   <body>
-    <div id="splash-screen" class="splash-screen">
-      <svg class="circle-animation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
-        <circle cx="150" cy="150" r="120" class="circle"></circle>
-      </svg>
-      <svg class="line-animation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
-        <path class="line" d="M50,150 Q150,50 250,150 Q150,250 50,150" />
-      </svg>
-    </div>    
+      <div id="splash-screen"></div>
+      <div id="content" style="display: none;"> <!-- Main content here --> </div>
+      <script src="./path/to/your/main.js"></script>    
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
     <!-- Splash Screen HTML -->
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        // Circle animation
-        anime({
-          targets: '.circle',
-          strokeDashoffset: [anime.setDashoffset, 0],
-          easing: 'easeInOutQuad',
-          duration: 1500,
-          loop: false,
-          delay: 500
-        });
-    
-        // Line animation
-        anime({
-          targets: '.line',
-          strokeDashoffset: [anime.setDashoffset, 0],
-          easing: 'easeInOutQuad',
-          duration: 1500,
-          delay: 1000,
-          loop: false
-        });
-    
-        // Fade out splash screen
-        setTimeout(() => {
-          anime({
-            targets: '#splash-screen',
-            opacity: [1, 0],
-            duration: 1000,
-            easing: 'easeInOutQuad',
-            complete: function () {
-              document.getElementById("splash-screen").style.display = "none";
-            }
-          });
-        }, 2500); // Splash screen disappears after animation completes
-      });
-    </script>
-    
-    
-  
-  
   </body>
 </html>
