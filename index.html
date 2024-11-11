@@ -9,25 +9,36 @@
   </head>
   <body>
     <div id="splash-screen" class="splash-screen">
-      <svg class="name-animation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 100">
-        <path class="line" d="M20,60 C40,20 80,20 100,40 C120,60 80,80 100,100" />
+      <svg class="circle-animation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+        <circle cx="100" cy="100" r="80" class="circle"></circle>
       </svg>
-    </div>
+      <h1 class="welcome-text">Welcome</h1>
+    </div>    
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
     <!-- Splash Screen HTML -->
     <script>
       document.addEventListener("DOMContentLoaded", function () {
+        // Animate the circle stroke
         anime({
-          targets: '.name-animation .line',
+          targets: '.circle',
           strokeDashoffset: [anime.setDashoffset, 0],
-          easing: 'easeInOutSine',
+          easing: 'easeOutQuad',
           duration: 1500,
-          delay: function (el, i) { return i * 250 },
-          direction: 'alternate',
           loop: false
         });
-
+    
+        // Animate the text opacity and position
+        anime({
+          targets: '.welcome-text',
+          opacity: [0, 1],
+          translateY: [50, 0],
+          easing: 'easeOutExpo',
+          duration: 1500,
+          delay: 1000
+        });
+    
+        // Fade out the splash screen after animation
         setTimeout(() => {
           anime({
             targets: '#splash-screen',
@@ -38,9 +49,10 @@
               document.getElementById("splash-screen").style.display = "none";
             }
           });
-        }, 3000); // Adjust this based on how long you want the animation to last
+        }, 2500); // Delay time for splash screen to fade out after the animation
       });
     </script>
+    
   
   
   </body>
