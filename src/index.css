@@ -56,24 +56,3 @@ body {
 }
 
 /* Splash Screen CSS */
-body, html {
-  margin: 0;
-  padding: 0;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  background-color: #1d1e22;
-}
-
-#splash-screen {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 10;
-  background: radial-gradient(circle, #2a2d34, #1d1e22);
-}
